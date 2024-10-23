@@ -1,0 +1,187 @@
+/********** Estilos generales **********/
+
+* {margin: 0; padding: 0; box-sizing: border-box;}
+
+:root {
+    --color-light: #FFF8EA;
+    --color-light-2: #FFF8EA;
+    --color-primary: #54AC9E;
+    --color-medium: #ffe2a4;
+    --color-dark: #2f1e15;
+    --gap-default: 1.25rem;
+}
+
+html {height: 100%;}
+
+body {
+    font: 400 1rem/1.5 "Roboto"; letter-spacing: .5px; color: var(--color-dark);
+    height: 100%;
+    display: grid; grid-template-rows: auto 680px 1fr auto;
+    background: linear-gradient(180deg, #caa442, #99692e);
+}
+
+/* Contenedor central: */
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1440px;
+}
+
+/* Ajustes Tipografía */
+
+h1 {font: clamp(32px, 9vw, 136px)/.9 'Amatic SC'; color: var(--color-light)}
+h2 {font: 40px Amatic SC; font-weight: 700;}
+h3 {font-weight: 500; max-width: 86%; line-height: 1.3;}
+
+/********** Header **********/
+
+header, footer {height: 80px;}
+
+#logo {font-size: 1.25rem;}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+}
+
+header nav ul {display: flex;}
+
+header nav ul li {padding-left: 24px; list-style: none;}
+
+header nav ul li a, #logo {color: var(--color-light); text-decoration: none; font-weight: 500;}
+.active {color: var(--color-dark);}
+
+/********** Sección Hero a dos columnas **********/
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: var(--gap-default);
+}
+
+.hero div {
+    display: flex;
+    gap: var(--gap-default);
+    justify-content: center;
+    flex-direction: column;    
+}
+
+.hero div img {margin-top: auto;}
+
+/********** Sección de tres columnas **********/
+
+.col3 {background: #ffe2a4;}
+
+.col3 .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* Usamos display:flex, junto con flex-direction: column y gap, para espaciar uniformente los elementos en lo vertical; */
+
+.col3 article {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-default);
+    align-items: center;
+    text-align: center;
+    hyphens: auto;
+    padding: calc(var(--gap-default) * 1.5) 0;
+}
+
+.col3 div img {height: 3rem;}
+
+/********** Footer **********/
+
+footer {background: rgb(155, 80, 36);
+        text-align: center;
+}
+
+/********** Botones **********/
+
+button {
+    height: 40px;
+    padding: 0 24px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .22px;
+    background: var(--color-primary);
+    border-radius: 24px;
+    border: none;
+    color: var(--color-light);
+    cursor: pointer;
+    width: fit-content;
+}
+
+/********** Media Queries **********/
+
+@media (max-width: 1440px) {
+
+    body {grid-template-rows: auto 560px 1fr auto;}
+}
+
+@media (max-width: 1280px) {
+
+    body {grid-template-rows: auto 440px 1fr auto;}
+    html {font-size: 15px;}
+}
+
+@media (max-width: 800px) {
+    :root {--gap-default: 1rem;}
+    html {font-size: 14px;}
+    body {grid-template-rows: auto 362px 1fr auto;}
+    .container {width: 90%;}
+    .hero {grid-template-columns: .8fr 1.2fr;}
+    .three-columns .container {grid-template-columns: 1fr;}
+    .three-columns div {margin-bottom: 1rem;}
+    
+    h2 {font-size: 30px;}
+    h3 {font-size: 14px; max-width: 90%;}
+}
+
+@media (max-width: 640px) {
+
+    body {grid-template-rows: auto 280px 1fr auto;}
+    html {font-size: 13px;}
+}
+/* Estilos del Loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+    transition: opacity 1s ease; 
+}
+
+.rotate {
+    animation: rotate 2s linear infinite;
+    transform-origin: center; /* Asegúrate de que rote alrededor del centro */
+}
+
+/* Animación para hacer rotar el SVG */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg); /* Comienza en 0 grados */
+    }
+    to {
+        transform: rotate(360deg); /* Rota hasta 360 grados */
+    }
+}
+
+
+/* Clase para ocultar el loader */
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0s 1s, opacity 1s ease; 
+}
